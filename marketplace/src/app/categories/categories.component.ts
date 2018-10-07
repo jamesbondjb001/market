@@ -12,8 +12,6 @@ import { Component, OnInit, Output ,EventEmitter, Input} from '@angular/core';
 
       app-sticky-header {
         padding-top: 150px;
-        
-        z-index: 10;
       }
 
       .content {
