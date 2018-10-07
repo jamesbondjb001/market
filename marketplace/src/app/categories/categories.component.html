@@ -1,13 +1,20 @@
-<div class="container">
-  <div class="row">
+<div class="row">
     <div class="col-2">
-      <app-category-list></app-category-list>
+      <app-sticky-header><app-category-list (categorySelected)="onCategorySelect($event)"></app-category-list></app-sticky-header>
     </div>
     <div class="col-10">
-      <app-buy-products></app-buy-products>
+      <div class="content">
+        <!-- <app-buy-products></app-buy-products> -->
+        <!-- <app-products-list [showCategory]="categorySel"></app-products-list> -->
+        <!-- <app-products-list ></app-products-list> -->
+        <app-show-all-products *ngIf="categorySel==='home'"></app-show-all-products>
+        <app-show-automobile-products *ngIf="categorySel==='Automobile'"></app-show-automobile-products>
+        <app-show-electronic-products *ngIf="categorySel==='Electronics'"></app-show-electronic-products>
+        <app-show-fashion-products *ngIf="categorySel==='Fashion'"></app-show-fashion-products>
+        <app-show-food-products *ngIf="categorySel==='Food'"></app-show-food-products>
+      </div>
     </div>
     <!-- <div class="col">
       3 of 3
     </div> -->
   </div>
-</div>
