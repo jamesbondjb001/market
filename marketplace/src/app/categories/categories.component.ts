@@ -27,7 +27,7 @@ export class CategoriesComponent implements OnInit {
 
   // @Output() categorySel = new EventEmitter<String>();
   @Input() categorySel ='home';
-
+  buyFlag : boolean =false;
   constructor() { }
 
   ngOnInit() {
@@ -37,5 +37,13 @@ export class CategoriesComponent implements OnInit {
     console.log("cat " + categorySelect);
     // this.categorySel.emit(categorySelect);
     this.categorySel=categorySelect;
+  }
+
+  buyNowSelected(buy : boolean){
+    this.buyFlag =  buy;
+  }
+
+  resetAllProducts(buy : boolean){
+    this.buyFlag=buy;
   }
 }

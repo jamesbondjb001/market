@@ -1,3 +1,18 @@
-<!-- <app-buy-products-header></app-buy-products-header> -->
-<hr>
-<app-products-list></app-products-list>
+<div class="container">
+    <div class="row">
+    <div class="left-style col-md-6">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{product.imgPath}}" width="286" height="280"  alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{product.productName}}</h5>
+          <p class="card-text">Details : {{product.description}}</p>
+          <p class="card-text">Seller : {{product.sellerName}}</p>
+          <p class="card-text">Price : {{product.price | currency:'INR':true:'1.2'}}</p>
+         <a href="#" class="btn btn-primary" (click)="deleteBuyingProduct()">Cancel</a>
+         &nbsp;
+         <a href="#" class="btn btn-primary" (click)="confirmBuyingProduct()">Confirm</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

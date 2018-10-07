@@ -17,7 +17,6 @@ import { TransactionsHistComponent } from './transactions-hist/transactions-hist
 import { SellProductsComponent } from './sell-products/sell-products.component';
 import { UploadProductsComponent } from './sell-products/upload-products/upload-products.component';
 import { UploadProductsListComponent } from './sell-products/upload-products-list/upload-products-list.component';
-import { ProductsListComponent } from './categories/buy-products/products-list/products-list.component';
 import { ShowAllProductsComponent } from './categories/show-all-products/show-all-products.component'
 import { ShowAutomobileProductsComponent } from './categories/show-automobile-products/show-automobile-products.component'
 import { ShowElectronicProductsComponent } from './categories/show-electronic-products/show-electronic-products.component'
@@ -38,7 +37,6 @@ import { ShowFoodProductsComponent } from './categories/show-food-products/show-
     SellProductsComponent,
     UploadProductsComponent,
     UploadProductsListComponent,
-    ProductsListComponent,
     ShowAllProductsComponent,
     ShowAutomobileProductsComponent,
     ShowElectronicProductsComponent,

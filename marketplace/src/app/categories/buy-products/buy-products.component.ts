@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Product } from '../products-list/product.model';
 
 @Component({
   selector: 'app-buy-products',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuyProductsComponent implements OnInit {
 
+  @Output() resetProduct = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit() {
   }
 
+  product = JSON.parse(localStorage.getItem("currentProduct"));
+  
+  deleteBuyingProduct(){
+    localStorage.removeItem('currentProduct');
+    this.resetProduct.emit(false);
+  }
+  confirmBuyingProduct(){
+
+  }
 }
