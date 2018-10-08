@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-2">
-      <app-sticky-header><app-category-list (categorySelected)="onCategorySelect($event)"></app-category-list></app-sticky-header>
+      <app-sticky-header *ngIf="!buyFlag"><app-category-list (categorySelected)="onCategorySelect($event)"></app-category-list></app-sticky-header>
     </div>
     <div class="col-10">
       <div class="content">

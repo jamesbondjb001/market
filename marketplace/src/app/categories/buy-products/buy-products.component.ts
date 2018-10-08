@@ -9,6 +9,8 @@ import { Product } from '../products-list/product.model';
 export class BuyProductsComponent implements OnInit {
 
   @Output() resetProduct = new EventEmitter<boolean>();
+  quantity : number = 1;
+  FixedQuantity : number = 1;
   constructor() { }
 
   ngOnInit() {
@@ -22,5 +24,14 @@ export class BuyProductsComponent implements OnInit {
   }
   confirmBuyingProduct(){
 
+  }
+
+  onQuantityChange(qty : string){
+    //console.log(qty);
+    if(parseInt(qty)<this.FixedQuantity){
+     alert("Quantity cannot be zero");
+     //console.log("if  "+qty);
+      this.quantity=1;
+    }
   }
 }

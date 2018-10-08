@@ -8,8 +8,8 @@
           <p class="card-text">Details : {{product.description}}</p>
           <p class="card-text">Seller : {{product.sellerName}}</p>
           <p class="card-text">Price : {{product.price | currency:'INR':true:'1.2'}}</p>
-         <p class="card-text">Total Price : </p>
-          <P>Quantity : <input type="number" id="quantity" name="quantity"></P>
+         <p class="card-text">Total Price : {{product.price * quantity | currency:'INR':true:'1.2'}}</p>
+          <P>Quantity : <input type="number" id="quantity" [(ngModel)]="quantity" class="form-control" (input)="onQuantityChange($event.target.value)"></P>
 
          <a href="#" class="btn btn-primary" (click)="deleteBuyingProduct()">Cancel</a>
          &nbsp;

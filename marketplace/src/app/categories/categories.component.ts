@@ -12,10 +12,14 @@ import { Component, OnInit, Output ,EventEmitter, Input} from '@angular/core';
 
       app-sticky-header {
         padding-top: 150px;
+        padding-left: 50px;
+        z-index: 10;
+        width: 50px;
       }
 
       .content {
         padding-left: 70px;
+        z-index: 1;
       }
 
     `
