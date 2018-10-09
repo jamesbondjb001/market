@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-12">
       <app-login *ngIf="navMenuLoaded==='login'" (loginFlag)="onSuccessLogin($event)"></app-login>
-      <app-categories *ngIf="navMenuLoaded ==='home'"></app-categories>
+      <app-categories *ngIf="navMenuLoaded ==='home'" (trackOrder)="setTrackOrderPage($event)"></app-categories>
       <app-sell-products *ngIf="navMenuLoaded ==='sell'"></app-sell-products>
       <app-transactions-hist *ngIf="navMenuLoaded ==='tran'"></app-transactions-hist>
     </div>

@@ -1,24 +1,12 @@
 <div class="row">
     <div class="col-2">
-<<<<<<< HEAD
-      <app-sticky-header *ngIf="!buyFlag"><app-category-list (categorySelected)="onCategorySelect($event)"></app-category-list></app-sticky-header>
-=======
       <app-sticky-header *ngIf="!buyFlag && !orderConfirmed"><app-category-list (categorySelected)="onCategorySelect($event)"></app-category-list></app-sticky-header>
->>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
     </div>
     <div class="col-10">
       <div class="content">
         <!-- <app-buy-products></app-buy-products> -->
         <!-- <app-products-list [showCategory]="categorySel"></app-products-list> -->
         <!-- <app-products-list ></app-products-list> -->
-<<<<<<< HEAD
-        <app-show-all-products *ngIf="categorySel==='home' && !buyFlag" (buyNow)="buyNowSelected($event)"></app-show-all-products>
-        <app-show-automobile-products *ngIf="categorySel==='Automobile' && !buyFlag " (buyNow)="buyNowSelected($event)"></app-show-automobile-products>
-        <app-show-electronic-products *ngIf="categorySel==='Electronics' && !buyFlag " (buyNow)="buyNowSelected($event)"></app-show-electronic-products>
-        <app-show-fashion-products *ngIf="categorySel==='Fashion' && !buyFlag" (buyNow)="buyNowSelected($event)"></app-show-fashion-products>
-        <app-show-food-products *ngIf="categorySel==='Food' && !buyFlag" (buyNow)="buyNowSelected($event)"></app-show-food-products>
-        <app-buy-products *ngIf="buyFlag" (resetProduct)="resetAllProducts($event)"></app-buy-products>
-=======
         <app-show-all-products *ngIf="categorySel==='home' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-all-products>
         <app-show-automobile-products *ngIf="categorySel==='Automobile' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-automobile-products>
         <app-show-electronic-products *ngIf="categorySel==='Electronics' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-electronic-products>
@@ -26,8 +14,7 @@
         <app-show-food-products *ngIf="categorySel==='Food' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-food-products>
         <app-buy-products *ngIf="buyFlag && !orderConfirmed" (resetProduct)="resetAllProducts($event)" 
         (orderConfirmed)="orderSubmit($event)"></app-buy-products>
-        <app-order-placed *ngIf="orderConfirmed" (resetOrderAllProduct)="resetOrderAllProduct($event)"></app-order-placed>
->>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
+        <app-order-placed *ngIf="orderConfirmed" (resetOrderAllProduct)="resetOrderAllProduct($event)" (trackProduct)="setTranPage($event)"></app-order-placed>
       </div>
     </div>
     <!-- <div class="col">

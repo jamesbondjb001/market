@@ -44,4 +44,8 @@ export class AppComponent {
     this.loginFlagSuccess = true;
     this.navMenuLoaded = 'home';
   }
+
+  setTrackOrderPage(track : string){
+    this.navMenuLoaded = track;
+  }
 }

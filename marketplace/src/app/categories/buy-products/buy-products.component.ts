@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Product } from '../products-list/product.model';
+import { OrderedProduct } from '../ordered-product-list/ordered-product.model';
 
 @Component({
   selector: 'app-buy-products',
@@ -9,12 +9,13 @@ import { Product } from '../products-list/product.model';
 export class BuyProductsComponent implements OnInit {
 
   @Output() resetProduct = new EventEmitter<boolean>();
-<<<<<<< HEAD
-=======
   @Output() orderConfirmed = new EventEmitter<boolean>();
->>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
   quantity : number = 1;
   FixedQuantity : number = 1;
+  
+  confirmedProductList : OrderedProduct[] =[];
+  orderIdGen : number =10001 ;
+
   constructor() { }
 
   ngOnInit() {
@@ -23,15 +24,28 @@ export class BuyProductsComponent implements OnInit {
   product = JSON.parse(localStorage.getItem("currentProduct"));
   
   deleteBuyingProduct(){
-    localStorage.removeItem('currentProduct');
+    localStorage.removeItem("currentProduct");
     this.resetProduct.emit(false);
   }
   confirmBuyingProduct(){
 
-<<<<<<< HEAD
-=======
+    this.confirmedProductList = JSON.parse(localStorage.getItem("confirmedProduct"));
+    localStorage.removeItem("confirmedProduct");
+    
+    this.confirmedProductList.push(new OrderedProduct(
+      this.product.category,
+      this.product.productName,
+      this.product.productId,
+      this.product.sellerId,
+      this.orderIdGen,
+      this.product.price,
+      this.product.description,
+      this.quantity,
+      this.quantity * this.product.price
+      )); 
+    localStorage.setItem("confirmedProduct", JSON.stringify(this.confirmedProductList));
     this.orderConfirmed.emit(true);
->>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
+    this.orderIdGen += 1; 
   }
 
   onQuantityChange(qty : string){

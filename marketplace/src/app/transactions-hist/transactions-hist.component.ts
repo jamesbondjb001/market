@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionsHistComponent implements OnInit {
 
+  product = JSON.parse(localStorage.getItem("confirmedProduct"));
   constructor() { }
 
   ngOnInit() {
