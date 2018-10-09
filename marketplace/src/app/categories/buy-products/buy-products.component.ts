@@ -9,6 +9,10 @@ import { Product } from '../products-list/product.model';
 export class BuyProductsComponent implements OnInit {
 
   @Output() resetProduct = new EventEmitter<boolean>();
+<<<<<<< HEAD
+=======
+  @Output() orderConfirmed = new EventEmitter<boolean>();
+>>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
   quantity : number = 1;
   FixedQuantity : number = 1;
   constructor() { }
@@ -24,6 +28,10 @@ export class BuyProductsComponent implements OnInit {
   }
   confirmBuyingProduct(){
 
+<<<<<<< HEAD
+=======
+    this.orderConfirmed.emit(true);
+>>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
   }
 
   onQuantityChange(qty : string){

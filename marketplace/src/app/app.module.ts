@@ -21,7 +21,12 @@ import { ShowAllProductsComponent } from './categories/show-all-products/show-al
 import { ShowAutomobileProductsComponent } from './categories/show-automobile-products/show-automobile-products.component'
 import { ShowElectronicProductsComponent } from './categories/show-electronic-products/show-electronic-products.component'
 import { ShowFashionProductsComponent } from './categories/show-fashion-products/show-fashion-products.component'
+<<<<<<< HEAD
 import { ShowFoodProductsComponent } from './categories/show-food-products/show-food-products.component'
+=======
+import { ShowFoodProductsComponent } from './categories/show-food-products/show-food-products.component';
+import { OrderPlacedComponent } from './categories/buy-products/order-placed/order-placed.component'
+>>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
 
 
 @NgModule({
@@ -42,7 +47,12 @@ import { ShowFoodProductsComponent } from './categories/show-food-products/show-
     ShowElectronicProductsComponent,
     ShowFashionProductsComponent,
     ShowFoodProductsComponent,
+<<<<<<< HEAD
     StickyHeaderComponent
+=======
+    StickyHeaderComponent,
+    OrderPlacedComponent
+>>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
   ],
   imports: [
     BrowserModule,

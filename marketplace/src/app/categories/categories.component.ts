@@ -30,6 +30,10 @@ export class CategoriesComponent implements OnInit {
   // @Output() categorySel = new EventEmitter<String>();
   @Input() categorySel ='home';
   buyFlag : boolean =false;
+<<<<<<< HEAD
+=======
+  orderConfirmed : boolean = false;
+>>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
   constructor() { }
 
   ngOnInit() {
@@ -48,4 +52,18 @@ export class CategoriesComponent implements OnInit {
   resetAllProducts(buy : boolean){
     this.buyFlag=buy;
   }
+<<<<<<< HEAD
+=======
+
+  orderSubmit(order : boolean){
+    console.log("order " +order);
+    this.orderConfirmed = order;
+  }
+
+  resetOrderAllProduct(order : boolean){
+    console.log(order  +" reset order")
+    this.orderConfirmed = order;
+    this.buyFlag=order;
+  }
+>>>>>>> 99464605cd689af85828e6778793e6f80ee449f4
 }
