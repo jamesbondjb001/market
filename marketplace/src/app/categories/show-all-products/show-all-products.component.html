@@ -1,18 +1,43 @@
+<form class="form-inline">
+    <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 80%;">
+    <button class="btn btn-outline-primary" (click)="searchText=''">Go</button>
+  </form>
+  <hr>
 <div class="container">
     <div class="row">
-    <div class="left-style col-md-6" *ngFor="let prod of product;let i = index">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{prod.imgPath}}" width="286" height="280"  alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{prod.productName}}</h5>
-          <p class="card-text">Details : {{prod.description}}</p>
-          <p class="card-text">Seller : {{prod.sellerName}}</p>
-          <p class="card-text">Price : {{prod.price | currency:'INR':true:'1.2'}}</p>
-          <a href="#" class="btn btn-primary" (click)="setBuyingProduct(prod)">Buy</a>
+      <div class="left-style col-md-4" *ngFor="let product of productArray">
+        <!-- <div *ngIf="categoryFetch===product.category; else home"> -->
+            <div *ngIf="categoryFetch===product.category">
+            <div class="card" style="width: 18rem;" *ngIf="filterCondition(product)">
+                <!-- <img class="card-img-top" src="{{prod.imgPath}}" width="286" height="280"  alt="Card image cap"> -->
+                <div class="card-body">
+                  <h5 class="card-title">{{product.productName}}</h5>
+                  <p class="card-text">Details : {{product.description}}</p>
+                  <p class="card-text">Qty Available : {{product.quantityAvailable}}</p>
+                  <p class="card-text">Price : {{product.price | currency:'INR':true:'1.2'}}</p>
+                  <a href="#" class="btn btn-primary" (click)="setBuyingProduct(product)">Buy</a>
+                </div>
+            </div>
+            <div class="is-clearfix" *ngIf="(i + 1) % 4 == 0"></div>
+            <hr>
         </div>
-      </div>
-      <div class="is-clearfix" *ngIf="(i + 1) % 4 == 0"></div>
-      <hr>
+
+        <!-- <ng-template #home> -->
+        <div *ngIf="categoryFetch==='home'">
+            <div class="card" style="width: 18rem;" *ngIf="filterCondition(product)">
+                <!-- <img class="card-img-top" src="{{prod.imgPath}}" width="286" height="280"  alt="Card image cap"> -->
+                <div class="card-body">
+                  <h5 class="card-title">{{product.productName}}</h5>
+                  <p class="card-text">Details : {{product.description}}</p>
+                  <p class="card-text">Qty Available : {{product.quantityAvailable}}</p>
+                  <p class="card-text">Price : {{product.price | currency:'INR':true:'1.2'}}</p>
+                  <a href="#" class="btn btn-primary" (click)="setBuyingProduct(product)">Buy</a>
+                </div>
+            </div>
+            <div class="is-clearfix" *ngIf="(i + 1) % 4 == 0"></div>
+            <hr>
+            </div>
+          <!-- </ng-template> -->
     </div>
   </div>
 </div>

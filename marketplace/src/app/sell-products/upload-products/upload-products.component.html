@@ -1,4 +1,67 @@
-<div class="conatiner">
+<div class="row">
+  <div class="col-md-5">
+    <form [formGroup]="this.productrService.form" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="$key">
+      <div class="form-group">
+        <label>Category</label>
+        <select formControlName="category" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.category.errors}">
+          <option>Electronics</option>
+          <option>Automobile</option>
+          <option>Fashion</option>
+          <option>Food</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="submitted && formControls.category.errors">This field is required.</div>
+        <!-- <input formControlName="category" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.category.errors}"> -->
+        
+      </div>
+      <div class="form-group">
+        <label>Product title</label>
+        <input formControlName="productName" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.productName.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.productName.errors">This field is required.</div>
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input formControlName="price" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.price.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.price.errors">
+          This field is required.</div>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input formControlName="description" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.description.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.description.errors">
+          This field is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Quantity</label>
+        <input formControlName="quantityAvailable" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.quantityAvailable.errors}">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.quantityAvailable.errors">
+          This field is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+    </form>
+    <div class="alert alert-info"  *ngIf="showSuccessMessage">
+      Submitted successfully.
+    </div>
+  </div>
+  <div class="col-md-7">
+    <app-customer-list></app-customer-list>
+  </div>
+</div>
+
+
+<!-- category : string,productName: string,
+    productId : string,
+    sellerId : string,
+    sellerName : string,
+    imgPath : string,
+    price  : number,
+    description : string,
+    quantityAvailable : number -->
+<!-- <div class="conatiner">
   <div class="row">
     <div class="col">
       <h5>Add Product</h5>
@@ -43,11 +106,10 @@
           <div class="col-xs-12">
             <button class="btn btn-success" type="submit">Add</button>
             &nbsp;
-            <!-- <button class="btn btn-danger" type="button">Delete</button> -->
             <button class="btn btn-primary" type="button">Clear</button>
           </div>
         </div>
       </form>
     </div>
   </div>
-</div>
+</div> -->

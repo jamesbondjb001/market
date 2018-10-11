@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { OrderedProduct } from '../ordered-product-list/ordered-product.model';
+import { OrderedProductService }  from 'src/app/shared/ordered-product.service';
 
 @Component({
   selector: 'app-buy-products',
@@ -12,12 +12,14 @@ export class BuyProductsComponent implements OnInit {
   @Output() orderConfirmed = new EventEmitter<boolean>();
   quantity : number = 1;
   FixedQuantity : number = 1;
+  submitted: boolean;
+  showSuccessMessage: boolean;
+  formControls = this.orderedProductService.form.controls;
   
-  confirmedProductList : OrderedProduct[] =[];
-  orderIdGen : number =10001 ;
-
-  constructor() { }
-
+ 
+  constructor(private orderedProductService: OrderedProductService) { }
+  
+ 
   ngOnInit() {
   }
 
@@ -27,25 +29,33 @@ export class BuyProductsComponent implements OnInit {
     localStorage.removeItem("currentProduct");
     this.resetProduct.emit(false);
   }
+  
   confirmBuyingProduct(){
+    this.submitted = true;
 
-    this.confirmedProductList = JSON.parse(localStorage.getItem("confirmedProduct"));
-    localStorage.removeItem("confirmedProduct");
-    
-    this.confirmedProductList.push(new OrderedProduct(
-      this.product.category,
-      this.product.productName,
-      this.product.productId,
-      this.product.sellerId,
-      this.orderIdGen,
-      this.product.price,
-      this.product.description,
-      this.quantity,
-      this.quantity * this.product.price
-      )); 
-    localStorage.setItem("confirmedProduct", JSON.stringify(this.confirmedProductList));
-    this.orderConfirmed.emit(true);
-    this.orderIdGen += 1; 
+    if (this.orderedProductService.form.valid) {
+      if (this.orderedProductService.form.get('$key').value == null)
+      console.log(this.orderedProductService.form.value);
+        this.orderedProductService.insertOrderedProduct(this.orderedProductService.form.value);
+      // else
+      //   this.orderedProductService.updateCustomer(this.orderedProductService.form.value);
+      // this.showSuccessMessage = true;
+      // setTimeout(() => this.showSuccessMessage = false, 3000);
+      // this.submitted = false;
+      // this.orderedProductService.form.reset();
+      //this is to be done for proper reset operation
+      this.orderedProductService.form.setValue({
+        $key: null,
+        category:'',
+        buyerId :'',
+        sellerId : '',
+        productName: '',
+        price: '',
+        description: '',
+        totalPrice :'',
+        quantity: ''
+      });
+    }
   }
 
   onQuantityChange(qty : string){

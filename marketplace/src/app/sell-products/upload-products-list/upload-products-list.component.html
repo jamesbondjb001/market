@@ -1,3 +1,27 @@
-<p>
-  upload-products-list works!
-</p>
+<form class="form-inline">
+    <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 80%;">
+    <button class="btn btn-outline-primary" (click)="searchText=''">X</button>
+  </form>
+<table class="table table-sm">
+  <thead>
+    <th>Category</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Quantity</th>
+    <th></th>
+  </thead>
+  <ng-container *ngFor="let product of productArray">
+    <tr class="table-primary" *ngIf="filterCondition(product)">
+      <td>{{product.category}}</td>
+      <td>{{product.productName}}</td>
+      <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.quantityAvailable}}</td>
+        <td>
+          <button class="btn btn-outline-info" (click)="productService.populateForm(product)">Edit</button>
+          <button class="btn btn-outline-danger" (click)="onDelete(product.$key)">Delete</button>
+        </td>
+    </tr>
+  </ng-container>
+</table>

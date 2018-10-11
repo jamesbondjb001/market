@@ -4,14 +4,11 @@
     </div>
     <div class="col-10">
       <div class="content">
-        <!-- <app-buy-products></app-buy-products> -->
-        <!-- <app-products-list [showCategory]="categorySel"></app-products-list> -->
-        <!-- <app-products-list ></app-products-list> -->
-        <app-show-all-products *ngIf="categorySel==='home' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-all-products>
-        <app-show-automobile-products *ngIf="categorySel==='Automobile' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-automobile-products>
+        <app-show-all-products *ngIf="!buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)" [categoryFetch]="categorySel"></app-show-all-products>
+        <!-- <app-show-automobile-products *ngIf="categorySel==='Automobile' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-automobile-products>
         <app-show-electronic-products *ngIf="categorySel==='Electronics' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-electronic-products>
         <app-show-fashion-products *ngIf="categorySel==='Fashion' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-fashion-products>
-        <app-show-food-products *ngIf="categorySel==='Food' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-food-products>
+        <app-show-food-products *ngIf="categorySel==='Food' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-food-products> -->
         <app-buy-products *ngIf="buyFlag && !orderConfirmed" (resetProduct)="resetAllProducts($event)" 
         (orderConfirmed)="orderSubmit($event)"></app-buy-products>
         <app-order-placed *ngIf="orderConfirmed" (resetOrderAllProduct)="resetOrderAllProduct($event)" (trackProduct)="setTranPage($event)"></app-order-placed>

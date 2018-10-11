@@ -5,6 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StickyHeaderComponent } from './sticky-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
@@ -23,6 +27,8 @@ import { ShowElectronicProductsComponent } from './categories/show-electronic-pr
 import { ShowFashionProductsComponent } from './categories/show-fashion-products/show-fashion-products.component'
 import { ShowFoodProductsComponent } from './categories/show-food-products/show-food-products.component';
 import { OrderPlacedComponent } from './categories/buy-products/order-placed/order-placed.component'
+import { ProductService } from './shared/product.service';
+import { OrderedProductService } from './shared/ordered-product.service';
 
 
 @NgModule({
@@ -51,9 +57,11 @@ import { OrderPlacedComponent } from './categories/buy-products/order-placed/ord
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [ProductService,OrderedProductService],
   bootstrap: [AppComponent],
   schemas: [
      NO_ERRORS_SCHEMA
