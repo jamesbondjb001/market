@@ -12,16 +12,18 @@
     <th></th>
   </thead>
   <ng-container *ngFor="let product of productArray">
-    <tr class="table-primary" *ngIf="filterCondition(product)">
-      <td>{{product.category}}</td>
-      <td>{{product.productName}}</td>
-      <td>{{product.price}}</td>
+    <ng-container *ngIf="product">
+      <tr class="table-primary" *ngIf="filterCondition(product)">
+        <td>{{product.category}}</td>
+        <td>{{product.productName}}</td>
+        <td>{{product.price}}</td>
         <td>{{product.description}}</td>
         <td>{{product.quantityAvailable}}</td>
         <td>
-          <button class="btn btn-outline-info" (click)="productService.populateForm(product)">Edit</button>
-          <button class="btn btn-outline-danger" (click)="onDelete(product.$key)">Delete</button>
+            <button class="btn btn-outline-info" (click)="productService.populateForm(product)">Edit</button>
+            <button class="btn btn-outline-danger" (click)="onDelete(product.$key)">Delete</button>
         </td>
-    </tr>
+      </tr>
+    </ng-container>
   </ng-container>
 </table>

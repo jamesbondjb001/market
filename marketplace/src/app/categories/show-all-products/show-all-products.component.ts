@@ -17,15 +17,24 @@ export class ShowAllProductsComponent implements OnInit {
   productArray = [];
   searchText: string = "";
 
+  user = JSON.parse(localStorage.getItem('currentUser'))
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe(
       list => {
         this.productArray = list.map(item => {
-          return {
-            $key: item.key,
-            ...item.payload.val()
-          };
+          
+          const $key = item.payload.key;
+          const data = { $key, ...item.payload.val() };
+          console.log("data "+ this.user.username);
+          if(data.sellerId!= this.user.username){
+            return data;
+          }
+
+          // return {
+          //   $key: item.key,
+          //   ...item.payload.val()
+          // };
         });
       });
   }

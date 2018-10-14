@@ -30,6 +30,9 @@ export class AppComponent {
   navMenuLoaded = 'home';
   loginFlagSuccess = true;
  
+ngOnInt(){
+}
+
   onNavigate(navMenuApp : string){
     console.log(navMenuApp);
     this.navMenuLoaded = navMenuApp;

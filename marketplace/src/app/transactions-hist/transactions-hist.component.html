@@ -1,9 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-             <ul class="list-group">
-                <li class="list-group-item">Transaction History</li>
-                <li class="list-group-item list-group-item-success" *ngFor="let prod of product">Order ID : {{product[0].orderId}} {{product[0].productName}}<a href="#">Details</a></li>
+            <h5>Transaction History</h5>
+             <ul class="list-group" *ngFor="let prod of productArray">
+                
+                <li class="list-group-item list-group-item-success" *ngIf="prod">
+                Order ID : {{prod.$key}}<br><a href="#">Details</a>
+                    </li>
                 <!-- <li class="list-group-item list-group-item-secondary">A simple secondary list group item</li>
                 <li class="list-group-item list-group-item-primary">A simple success list group item</li>
                 <li class="list-group-item list-group-item-danger">A simple danger list group item</li>

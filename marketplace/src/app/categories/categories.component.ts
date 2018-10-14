@@ -27,7 +27,6 @@ import { Component, OnInit, Output ,EventEmitter, Input} from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  // @Output() categorySel = new EventEmitter<String>();
   @Output() trackOrder = new EventEmitter<String>();
   @Input() categorySel ='home';
   buyFlag : boolean =false;

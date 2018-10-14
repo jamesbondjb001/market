@@ -12,11 +12,10 @@ export class BuyProductsComponent implements OnInit {
   @Output() orderConfirmed = new EventEmitter<boolean>();
   quantity : number = 1;
   FixedQuantity : number = 1;
-  submitted: boolean;
   showSuccessMessage: boolean;
-  formControls = this.orderedProductService.form.controls;
+
+  orderId : String;
   
- 
   constructor(private orderedProductService: OrderedProductService) { }
   
  
@@ -24,38 +23,35 @@ export class BuyProductsComponent implements OnInit {
   }
 
   product = JSON.parse(localStorage.getItem("currentProduct"));
-  
+  user = JSON.parse(localStorage.getItem('currentUser'));
+
   deleteBuyingProduct(){
     localStorage.removeItem("currentProduct");
     this.resetProduct.emit(false);
   }
   
   confirmBuyingProduct(){
-    this.submitted = true;
+    //console.log(this.product.category);
+   localStorage.setItem("orderedProduct", JSON.stringify({
+      'category' : this.product.category,
+      'buyerId' : this.user.username,
+      'sellerId' : this.product.sellerId,
+      'productName': this.product.productName,
+      'price': this.product.price,
+      'description': this.product.description,
+      'totalPrice' : this.quantity*this.product.price,
+      'quantity': this.quantity
+    }))
 
-    if (this.orderedProductService.form.valid) {
-      if (this.orderedProductService.form.get('$key').value == null)
-      console.log(this.orderedProductService.form.value);
-        this.orderedProductService.insertOrderedProduct(this.orderedProductService.form.value);
-      // else
-      //   this.orderedProductService.updateCustomer(this.orderedProductService.form.value);
-      // this.showSuccessMessage = true;
-      // setTimeout(() => this.showSuccessMessage = false, 3000);
-      // this.submitted = false;
-      // this.orderedProductService.form.reset();
-      //this is to be done for proper reset operation
-      this.orderedProductService.form.setValue({
-        $key: null,
-        category:'',
-        buyerId :'',
-        sellerId : '',
-        productName: '',
-        price: '',
-        description: '',
-        totalPrice :'',
-        quantity: ''
-      });
-    }
+    // console.log(JSON.parse(localStorage.getItem("orderedProduct")));
+    // console.log(this.product.category);
+    this.orderedProductService.insertOrderedProduct();
+    this.orderId = this.orderedProductService.keyValue;
+    this.orderConfirmed.emit(true);
+    localStorage.setItem("orderIdPass", JSON.stringify({'orderId':this.orderId}));
+
+    // localStorage.removeItem("currentProduct");
+    // localStorage.removeItem("orderedProduct");
   }
 
   onQuantityChange(qty : string){
