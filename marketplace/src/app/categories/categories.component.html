@@ -4,7 +4,7 @@
     </div>
     <div class="col-10">
       <div class="content">
-        <app-show-all-products *ngIf="!buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)" [categoryFetch]="categorySel"></app-show-all-products>
+        <app-show-all-products *ngIf="!buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)" [categoryFetch]="categorySel" [home]="home"></app-show-all-products>
         <!-- <app-show-automobile-products *ngIf="categorySel==='Automobile' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-automobile-products>
         <app-show-electronic-products *ngIf="categorySel==='Electronics' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-electronic-products>
         <app-show-fashion-products *ngIf="categorySel==='Fashion' && !buyFlag && !orderConfirmed" (buyNow)="buyNowSelected($event)"></app-show-fashion-products>

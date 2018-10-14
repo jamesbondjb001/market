@@ -29,6 +29,7 @@ export class CategoriesComponent implements OnInit {
 
   @Output() trackOrder = new EventEmitter<String>();
   @Input() categorySel ='home';
+  @Input() home =true;
   buyFlag : boolean =false;
   orderConfirmed : boolean = false;
   constructor() { }
@@ -36,10 +37,14 @@ export class CategoriesComponent implements OnInit {
   ngOnInit() {
   }
 
-  onCategorySelect(categorySelect : string){
-    console.log("cat " + categorySelect);
+  onCategorySelect($event){
+    console.log("cat " + $event.category) ;
     // this.categorySel.emit(categorySelect);
-    this.categorySel=categorySelect;
+    // this.categorySel=categorySelect;
+    // this.home = home;
+    this.categorySel=$event.category;
+    this.home = $event.home;
+
   }
 
   buyNowSelected(buy : boolean){

@@ -24,11 +24,11 @@ import { CategoriesComponent } from './categories/categories.component';
   ]
 })
 export class AppComponent {
-//  navMenuLoaded = 'login';
-//  loginFlagSuccess = false;
+ navMenuLoaded = 'login';
+ loginFlagSuccess = false;
 
-  navMenuLoaded = 'home';
-  loginFlagSuccess = true;
+  // navMenuLoaded = 'home';
+  // loginFlagSuccess = true;
  
 ngOnInt(){
 }

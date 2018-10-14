@@ -12,6 +12,7 @@ export class ShowAllProductsComponent implements OnInit {
   @Output() buyNow = new EventEmitter<boolean>();
 
   @Input() categoryFetch : string;
+  @Input() home : boolean;
 
   constructor(private productService: ProductService) { }
   productArray = [];
