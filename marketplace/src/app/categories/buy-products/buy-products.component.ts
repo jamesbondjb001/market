@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { OrderedProductService }  from 'src/app/shared/ordered-product.service';
+import { ProductService }  from 'src/app/shared/product.service';
 
 @Component({
   selector: 'app-buy-products',
@@ -14,9 +15,10 @@ export class BuyProductsComponent implements OnInit {
   FixedQuantity : number = 1;
   showSuccessMessage: boolean;
 
+
   orderId : String;
   
-  constructor(private orderedProductService: OrderedProductService) { }
+  constructor(private orderedProductService: OrderedProductService,private ProductService : ProductService) { }
   
  
   ngOnInit() {
@@ -44,19 +46,22 @@ export class BuyProductsComponent implements OnInit {
     }))
 
     // console.log(JSON.parse(localStorage.getItem("orderedProduct")));
-    // console.log(this.product.category);
+   // console.log(this.product.quantityAvailable );
     this.orderedProductService.insertOrderedProduct();
     this.orderId = this.orderedProductService.keyValue;
     this.orderConfirmed.emit(true);
+    //update quantity
+    this.product.quantityAvailable = this.product.quantityAvailable - this.quantity;
+   // console.log(this.product.quantityAvailable );
     localStorage.setItem("orderIdPass", JSON.stringify({'orderId':this.orderId}));
-
+    this.ProductService.updateQuantity(this.product.$key,this.product.quantityAvailable);
     // localStorage.removeItem("currentProduct");
     // localStorage.removeItem("orderedProduct");
   }
 
   onQuantityChange(qty : string){
     //console.log(qty);
-    if(parseInt(qty)<this.FixedQuantity){
+    if(parseInt(qty)<this.FixedQuantity || qty===null ){
      alert("Quantity cannot be zero");
      //console.log("if  "+qty);
       this.quantity=1;

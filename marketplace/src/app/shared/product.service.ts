@@ -55,6 +55,14 @@ export class ProductService {
       });
   }
 
+  updateQuantity(key : string,quant : number) {
+   // console.log(key + " prod service");
+    this.productlist.update(key,
+      {
+        quantityAvailable: quant
+      });
+  }
+
   deleteCustomer($key: string) {
     this.productlist.remove($key);
   }

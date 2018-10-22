@@ -2,11 +2,22 @@
     <div class="row">
         <div class="col-12">
             <h5>Transaction History</h5>
-             <ul class="list-group" *ngFor="let prod of productArray">
+             <ul class="list-group" *ngFor="let prod of productArray; let i = index;">
                 
                 <li class="list-group-item list-group-item-success" *ngIf="prod">
-                Order ID : {{prod.$key}}<br><a href="#">Details</a>
-                    </li>
+                Order ID : {{prod.$key}}<br>
+                <!-- <a href="#" data-toggle="collapse" data-target="#collapseExample{{i}}" aria-expanded="false" aria-controls="collapseExample">Details</a> -->
+                <a href="#" data-toggle="collapse" [attr.data-target]="'#' + prod.$key" aria-expanded="false" aria-controls="collapseExample">Details</a>
+                <div class="collapse" [attr.id]="prod.$key">
+                  <div class="card card-body">
+                    <p class="card-text">Product : {{prod.productName}}</p>
+                    <p class="card-text">Details : {{prod.description}}</p>
+                    <p class="card-text">Seller : {{prod.sellerId}}</p>
+                    <p class="card-text">Quantity : {{prod.quantity}}</p>
+                    <p class="card-text">Total Price : {{prod.totalPrice | currency:'INR':true:'1.2'}}</p>
+                  </div>
+                </div>
+                </li>
                 <!-- <li class="list-group-item list-group-item-secondary">A simple secondary list group item</li>
                 <li class="list-group-item list-group-item-primary">A simple success list group item</li>
                 <li class="list-group-item list-group-item-danger">A simple danger list group item</li>
